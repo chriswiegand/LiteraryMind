@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Elegant, literary palette */
+  --background: 30 20% 98%;      /* Soft cream/paper */
+  --foreground: 222 47% 11%;     /* Deep ink blue/black */
+  
+  --primary: 26 35% 45%;         /* Leather/Book binding brown */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 30 15% 92%;       /* Slightly darker paper */
+  --secondary-foreground: 222 47% 11%;
+  
+  --muted: 30 15% 92%;
+  --muted-foreground: 215 16% 40%;
+  
+  --accent: 142 30% 35%;         /* Vintage green */
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 30 10% 85%;
+  --input: 30 10% 85%;
+  --ring: 26 35% 45%;
+
+  --radius: 0.75rem;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans selection:bg-primary/20 selection:text-primary;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+/* Custom scrollbar for a polished feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+/* Card hover effects */
+.book-card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:shadow-primary/5;
+}
